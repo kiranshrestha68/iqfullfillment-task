@@ -19,39 +19,37 @@
       <div class="home__row3">
         <div class="home__col1">
           <div class="home__total">
-            <div class="home__totalIndividual">
+            <div
+              class="home__totalIndividual"
+              v-for="count in resData.counters"
+              :key="count.id"
+            >
               <img :src="require('../assets/staff1.svg')" alt="" />
               <div class="home__totalIndividuals">
-                <span>Total Patients</span> <span>24,250</span>
-              </div>
-            </div>
-
-            <div class="home__totalIndividual">
-              <img :src="require('../assets/staff1.svg')" alt="" />
-              <div class="home__totalIndividuals">
-                <span>Total Patients</span> <span>24,250</span>
-              </div>
-            </div>
-
-            <div class="home__totalIndividual">
-              <img :src="require('../assets/staff1.svg')" alt="" />
-              <div class="home__totalIndividuals">
-                <span>Total Patients</span> <span>24,250</span>
+                <span>{{ count.title }}</span> <span>{{ count.value }}</span>
               </div>
             </div>
           </div>
           <div class="home__lineChart">
             <div class="linechart__headers">
-              <h3>Patients Covid Statistics</h3>
+              <h3>{{ this.resData.covid_report.title }}</h3>
               <div class="linechart__buttons">
                 <button class="linechart__monthly">Monthly</button>
                 <button class="linechart__weekly">Weekly</button>
               </div>
             </div>
-            <div class="linechart__body"><Linechart /></div>
+            <div class="linechart__body"><Linechart :resData="resData" /></div>
           </div>
         </div>
-        <div class="home__col2"></div>
+        <div class="home__col2">hello</div>
+      </div>
+
+      <div class="home__row4">
+        <div class="home__row4col1">
+          <div class="home__piechart"><Doughnut :resData="resData" /></div>
+          <div class="home__piechart"><Doughnut2 :resData="resData" /></div>
+        </div>
+        <div class="home__row4col2">hello test</div>
       </div>
     </div>
   </div>
@@ -60,7 +58,9 @@
 <script>
 import Topbar from "../components/Topbar.vue";
 import Linechart from "../components/Linechart.vue";
-// import { GChart } from "vue-google-charts/legacy";
+import Doughnut2 from "../components/Doughnut2.vue";
+import Doughnut from "../components/Doughnut.vue";
+
 import axios from "axios";
 
 export default {
@@ -68,18 +68,38 @@ export default {
   components: {
     Topbar,
     Linechart,
+    Doughnut2,
+    Doughnut,
   },
   props: {},
 
   data() {
-    return {};
+    return {
+      resData: null,
+    };
   },
 
-  async created() {
-    const res = await axios.get(
-      "https://apitest.iqfulfillment.com/v1/test/dashboard"
-    );
-    console.log(res, "hellot his is ers");
+  created() {
+    this.getDashboard();
+  },
+
+  methods: {
+    async getDashboard() {
+      await axios
+        .get("https://apitest.iqfulfillment.com/v1/test/dashboard")
+        .then((res) => {
+          if (res.data.success == true) {
+            // console.log(
+            //   res.data,
+            //   "helo this is res from line chart.js"
+            // );
+            this.resData = res.data;
+          }
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    },
   },
 };
 </script>
@@ -89,8 +109,8 @@ export default {
 
 .home__main {
   /* border: 1px solid black; */
-  padding: 0 2%;
-  min-height: 100vh;
+  padding: 0 2% 3% 2%;
+  min-height: 120vh;
   background-color: #f4f7fc;
 }
 
@@ -248,5 +268,47 @@ export default {
   margin: 0 6px;
   padding: 8px 15px;
   border-radius: 8px;
+}
+
+.home__row4 {
+  display: flex;
+  /* border :1px solid black; */
+}
+
+.home__row4col1 {
+  /* border: 1px solid blue; */
+  flex: 8.5;
+  /* min-height: 40vh; */
+  display: flex;
+  /* align-items: center; */
+  justify-content: space-around;
+  /* margin-top: 25px; */
+  /* background: white; */
+  /* background: white; */
+  /* padding: 0 1.5%; */
+  /* border-radius: 15px; */
+  /* margin: 20px 50px 20px 0; */
+  margin-right: 30px;
+  /* background-color: blue; */
+}
+
+.home__piechart {
+  /* border :1px solid black; */
+  width: 45%;
+  background: white;
+  border-radius: 12px;
+  padding: 1%;
+  margin-top: 1%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  /* background-color: blue; */
+  /* margin-right: 10%; */
+}
+
+.home__row4col2 {
+  /* border: 1px solid blue; */
+  flex: 3.5;
 }
 </style>

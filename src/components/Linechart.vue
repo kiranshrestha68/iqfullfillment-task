@@ -6,59 +6,66 @@
 
 <script>
 import Chart from "chart.js/dist/chart";
-
-export const planetChartData = {
-  type: "line",
-  data: {
-    labels: [
-      "Mercury",
-      "Venus",
-      "Earth",
-      "Mars",
-      "Jupiter",
-      "Saturn",
-      "Uranus",
-      "Neptune",
-    ],
-    datasets: [
-      {
-        label: "Number of Moons",
-        data: [0, 0, 1, 2, 79, 82, 27, 14],
-        backgroundColor: "#1fadd8",
-        borderColor: "#1fadd8",
-        borderWidth: 2,
-      },
-      {
-        label: "Planetary Mass",
-        data: [0.166, 2.081, 3.003, 0.323, 954.792, 285.886, 43.662, 51.514],
-        backgroundColor: "blue",
-        borderColor: "blue",
-        borderWidth: 2,
-      },
-    ],
-  },
-  options: {
-    responsive: true,
-    lineTension: 1,
-    scales: {
-      yAxes: [
-        {
-          ticks: {
-            beginAtZero: true,
-            padding: 25,
-          },
-        },
-      ],
-    },
-  },
-};
+// import { dashboard } from "../services/api.service";
+// import axios from "axios";
 
 export default {
   name: "Linechart",
+  props: ["resData"],
   data() {
     return {
-      planetChartData: planetChartData,
+      dashboardData: null,
+      planetChartData: {
+        type: "line",
+        data: {
+          labels: this.resData.covid_report.categories,
+          datasets: [
+            {
+              label: this.resData.covid_report.types[0],
+                data:this.resData.covid_report.values[0],
+              backgroundColor: "#1fadd8",
+              borderColor: "#1fadd8",
+              borderWidth: 2,
+            },
+            {
+              label: this.resData.covid_report.types[1],
+              data:this.resData.covid_report.values[1],
+              backgroundColor: "blue",
+              borderColor: "blue",
+              borderWidth: 2,
+            },
+          ],
+        },
+        options: {
+          responsive: true,
+          lineTension: 1,
+          scales: {
+            yAxes: [
+              {
+                ticks: {
+                  beginAtZero: true,
+                  padding: 25,
+                },
+              },
+            ],
+          },
+        },
+      },
     };
+  },
+
+  created() {
+    // this.planetChartData.data.labels = ["hello", "kiran", "kkka", "fkljek"]
+    // console.log(this.resData, "hello from props")
+  },
+
+  watch: {
+    // resData(val) {
+    //   this.dashboardData = val;
+    //   console.log(this.dashboardData.covid_report.categories, 'helllo')
+    //   this.planetChartData.data.labels = this.dashboardData.data.labels
+    //   console.log(this.planetChartData.data.labels, "ellllo")
+    // },
   },
 
   mounted() {
