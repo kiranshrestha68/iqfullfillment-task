@@ -108,7 +108,6 @@ export default {
 @import url("https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Montserrat:wght@200;400&family=Roboto:wght@500&display=swap");
 
 .home__main {
-  /* border: 1px solid black; */
   padding: 0 2% 3% 2%;
   min-height: 120vh;
   background-color: #f4f7fc;
@@ -118,7 +117,6 @@ export default {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  /* border: 1px solid black; */
   padding: 1.5% 0;
 }
 

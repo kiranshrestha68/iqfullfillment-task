@@ -5,7 +5,11 @@
         <div class="topbar__leftleft">
           <img :src="require('../assets/search.svg')" alt="" />
 
-          <input placeholder="Search..." />
+          <input placeholder="Search..." v-model="searchText" />
+
+          <div class="search__autoComplete" v-show="showSearchSuggestion">
+            <AutoComplete  :searchFound="searchFound" />
+          </div>
         </div>
 
         <div class="topbar__filter">
@@ -28,20 +32,84 @@
         </div>
       </div>
     </div>
-  
   </div>
 </template>
 
 <script>
+import AutoComplete from "../components/AutoComplete.vue";
+import axios from "axios";
+
 export default {
   name: "Topbar",
-  components: {},
+  components: {
+    AutoComplete,
+  },
+
+  data() {
+    return {
+      showSearchSuggestion: false,
+      searchText: "",
+      searchItems: [],
+      searchFound: null,
+    };
+  },
   props: {},
+
+  watch: {
+    searchText(val) {
+      if (this.searchText.length > 1) {
+        this.getSearchData();
+      }
+
+      if (val.length == 0) {
+        this.showSearchSuggestion = false;
+      }
+    },
+  },
+  methods: {
+    getSearchData() {
+      const _data = {
+        // loc_id: 1,
+        q: this.searchText,
+      };
+
+      axios
+        .post("https://apitest.iqfulfillment.com/v1/test/search", _data)
+        .then((response) => {
+          // console.log(
+          //   response.data.results,
+          //   "hello response from search textttttt"
+          // );
+          this.searchItems = response.data.results;
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+
+      const data = this.searchItems.filter((val) => {
+        if (this.searchText === "") {
+          return val && this.showSearchSuggestion == false;
+        } else if (val.toLowerCase().includes(this.searchText.toLowerCase())) {
+          this.showSearchSuggestion = true;
+          return val;
+        }
+      });
+      // console.log(this.showSearchSuggestion, "show searchsuggestion");
+      this.searchFound = data;
+    },
+  },
 };
 </script>
 
 <style scoped>
 @import url("https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Montserrat:wght@200;400&family=Roboto:wght@500&display=swap");
+
+.search__autoComplete {
+  position: absolute;
+  z-index: 9999;
+  top: 41px;
+  width: 90%;
+}
 
 .topbar__main {
   margin: 10px 0;
@@ -62,9 +130,18 @@ export default {
 }
 
 .topbar__leftleft {
+  /* border: 1px solid black; */
   display: flex;
   padding: 10px 15px;
   align-items: center;
+  position: relative;
+}
+
+.search__autocomplete {
+  position: absolute;
+  bottom: 0;
+  /* height: 100px; */
+  z-index: 99;
 }
 
 .topbar__leftleft > img {
@@ -161,6 +238,4 @@ export default {
   color: rgb(107, 107, 107);
   font-size: 12px;
 }
-
-
 </style>
