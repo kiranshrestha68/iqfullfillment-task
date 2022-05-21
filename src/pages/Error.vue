@@ -45,7 +45,7 @@ export default {
 }
 
 .error__onHome:hover{
-    color: black;
+    color: #000000;
 }
 
 .notfoundpage__main {
@@ -54,12 +54,11 @@ export default {
   align-items: center;
   min-height: 90vh;
   font-family: "Roboto", sans-serif;
-  /* color: red; */
 }
 
 .notfoundpage__left > h1 {
   font-size: 200px;
-  color: red;
+  color: #ff0000;
   font-family: "Roboto", sans-serif;
 }
 
@@ -93,6 +92,6 @@ export default {
 }
 
 .notfoundpage__icon {
-  color: red;
+  color: #ff0000;
 }
 </style>

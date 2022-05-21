@@ -1,37 +1,40 @@
 <template>
-  
-  
-      <!-- <div class="home__sidebar"><Sidebar /></div> -->
-      <div class="home__homeMain">stats</div>
- 
+  <div>
+    <div><Topbar /></div>
+    <div class="page"><h2>Statistics</h2></div>
+  </div>
 </template>
 
 <script>
-// import Sidebar from "../components/Sidebar.vue"
+import Topbar from "../components/Topbar.vue";
 
 export default {
-  name: "Home",
+  name: "Statistics",
   components: {
+    Topbar,
   },
   props: {},
 };
 </script>
 
 <style scoped>
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Montserrat:wght@200;400&family=Roboto:wght@500&display=swap");
 
-.home__main {
+.page {
+  padding: 0 2% 3% 2%;
+  background-color: #f4f7fc;
+  min-height: 90vh;
+}
+
+.page {
   display: flex;
-  /* border: 1px solid black; */
-  min-height: 100vh;
+  justify-content: center;
+  align-items: center;
 }
 
-.home__sidebar {
-  flex: 2;
-  min-height: 100%;
-  /* border :2px solid red; */
-}
-
-.home__homeMain {
-  flex: 10;
+.page > h2 {
+  color: #0000ff;
+  font-family: "Montserrat", sans-serif;
+  letter-spacing: 1px;
 }
 </style>

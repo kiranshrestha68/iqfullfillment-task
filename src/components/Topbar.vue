@@ -116,8 +116,7 @@ export default {
 
 .topbar__main {
   margin: 10px 0;
-  /* border: 1px solid black; */
-  background-color: white;
+  background-color: #ffffff;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -126,14 +125,13 @@ export default {
 
 .topbar__left {
   display: flex;
-  border: 1px solid rgb(228, 228, 228);
+  border: 1px solid #e4e4e4;
   border-radius: 40px;
   width: 18vw;
   height: 40px;
 }
 
 .topbar__leftleft {
-  /* border: 1px solid black; */
   display: flex;
   padding: 10px 15px;
   align-items: center;
@@ -143,7 +141,6 @@ export default {
 .search__autocomplete {
   position: absolute;
   bottom: 0;
-  /* height: 100px; */
   z-index: 99;
 }
 
@@ -159,7 +156,7 @@ export default {
   outline: none;
   font-size: 14px;
   font-family: "Montserrat", sans-serif;
-  color: rgb(83, 83, 83);
+  color: #535353;
 }
 
 ::placeholder {
@@ -176,16 +173,16 @@ export default {
 .topbar__filter {
   display: flex;
   align-items: center;
-  border-left: 1px solid rgb(228, 228, 228);
+  border-left: 1px solid #e4e4e4;
   padding-left: 10px;
   font-size: 14px;
   font-family: "Montserrat", sans-serif;
-  color: rgb(83, 83, 83);
+  color: #535353;
   cursor: pointer;
 }
 
 .topbar__filter:hover {
-  color: black;
+  color: #000000;
 }
 
 .topbar__profile {
@@ -227,18 +224,18 @@ export default {
   display: flex;
   flex-direction: column;
   font-family: "Montserrat", sans-serif;
-  color: rgb(107, 107, 107);
+  color: #6b6b6b;
   margin-left: 10px;
 }
 
 .topbar__profileName > span:nth-child(1) {
-  color: black;
+  color: #000000;
   font-size: 14px;
   font-weight: bolder;
 }
 
 .topbar__profileName > span:nth-child(2) {
-  color: rgb(107, 107, 107);
+  color: #6b6b6b;
   font-size: 12px;
 }
 </style>

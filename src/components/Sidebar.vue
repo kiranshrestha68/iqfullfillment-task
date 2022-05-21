@@ -172,18 +172,14 @@ export default {
   text-transform: uppercase;
   letter-spacing: 1.2px;
   margin: 10px 0;
-  /* font-weight: 200; */
 }
 
 .sidebar__contents {
-  /* border: 1px solid blue; */
   width: 100%;
 }
 
 .sidebar__content {
-  /* width: 100%; */
-  /* width: 80%; */
-  /* width: 300px; */
+
   padding: 10px 0;
   margin: 5px 0;
   display: flex;
@@ -202,9 +198,7 @@ export default {
 .sidebar__bottom {
   display: flex;
   flex-direction: column;
-  /* justify-content: center; */
   align-items: center;
-  /* border :1px solid black; */
   text-align: center;
   margin-bottom: 20%;
 }
@@ -241,7 +235,6 @@ export default {
 
 .sidebar__bottomFirst > h3 {
   font-family: "Montserrat", sans-serif;
-  /* color: rgb(41, 41, 41); */
   font-size: 16px;
   font-weight: bolder;
   margin: 10px 0;
@@ -249,7 +242,6 @@ export default {
 
 .sidebar__bottomFirst > span {
   font-family: "Montserrat", sans-serif;
-  /* color: rgb(41, 41, 41); */
   font-size: 13px;
   margin: 4px 0;
   letter-spacing: 1px;
@@ -261,7 +253,7 @@ export default {
   border-radius: 8px;
   color: white;
   font-size: 13px;
-  background-color: blue;
+  background-color: #0000ff;
   font-family: "Montserrat", sans-serif;
   cursor: pointer;
   font-weight: bolder;
@@ -269,7 +261,7 @@ export default {
 }
 
 .sidebar__bottomFirst > button:hover {
-  background-color: rgb(9, 9, 172);
+  background-color: #0909ac;
   transition: 0.5s all;
 }
 
@@ -286,7 +278,7 @@ export default {
 
 .sidebar__bottomSecond > p{
   font-size: 12px;
-  color: rgb(139, 139, 139);
+  color: #8b8b8b;
   letter-spacing: 0.3px;
   margin-top: 15px;
   margin: 3%;

@@ -214,7 +214,6 @@ export default {
 
 .home__main {
   padding: 0 2% 3% 2%;
-  /* min-height: 120vh; */
   background-color: #f4f7fc;
 }
 
@@ -255,7 +254,7 @@ export default {
 
 .home__registerButton:hover,
 .home__registerButton > button:hover {
-  background: blue;
+  background: #0000ff;
 
   cursor: pointer;
   transition: 0.5s all;
@@ -264,7 +263,7 @@ export default {
 .home__registerButton > button {
   border: none;
   background: transparent;
-  color: white;
+  color: #ffffff;
   font-size: 15px;
   letter-spacing: 1px;
   font-weight: bolder;
@@ -282,13 +281,11 @@ export default {
 }
 
 .home__col1 {
-  /* border: 1px solid rgb(99, 22, 22); */
   flex: 8.5;
   margin-right: 25px;
 }
 
 .home__total {
-  /* border: 1px solid black; */
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -296,7 +293,6 @@ export default {
 }
 
 .home__totalIndividual {
-  /* border: 1px solid blue; */
   display: flex;
   align-items: center;
   padding: 15px;
@@ -319,7 +315,7 @@ export default {
 .home__totalIndividuals > span:nth-child(1) {
   font-size: 14px;
   font-family: "Montserrat", sans-serif;
-  color: rgb(87, 87, 87);
+  color: #575757;
   font-weight: bolder;
   letter-spacing: 0.5px;
   margin: 4px 0;
@@ -328,19 +324,14 @@ export default {
 .home__totalIndividuals > span:nth-child(2) {
   font-size: 18px;
   font-family: "Montserrat", sans-serif;
-  /* color: rgb(87, 87, 87); */
   font-weight: bolder;
   letter-spacing: 0.5px;
-  /* margin: 10px 0; */
   margin: 4px 0;
-
 }
 
 .home__lineChart {
-  /* border: 1px solid black; */
   min-height: 40vh;
-  /* margin-top: 25px; */
-  background: white;
+  background: #ffffff;
   padding: 1.5%;
   border-radius: 15px;
   margin: 20px 8px;
@@ -350,7 +341,7 @@ export default {
   flex: 3.5;
   margin-bottom: 21px;
   border-radius: 15px;
-  background-color: white;
+  background-color: #ffffff;
   padding: 1.5%;
   display: flex;
   flex-direction: column;
@@ -424,7 +415,6 @@ export default {
 }
 
 .col2__weekselectActive {
-  /* border: 1px solid black; */
   color: blue;
   background-color: #f4f7fc;
   font-weight: bolder;
@@ -440,10 +430,7 @@ export default {
   text-align: center;
 }
 
-/* .col2__body{
-  border: 1px solid black;
 
-} */
 
 .col2__body > h2 {
   color: #292929;
@@ -478,7 +465,6 @@ export default {
 .col2__coronaDesc {
   display: flex;
   flex-direction: column;
-  /* border: 1px solid black; */
   margin-left: 25px;
 }
 
@@ -496,7 +482,7 @@ export default {
   font-weight: bolder;
   letter-spacing: 1px;
   font-size: 15px;
-  color: grey;
+  color: #808080;
 }
 
 .col2__coronaDesc > span:nth-child(3) {
@@ -509,7 +495,6 @@ export default {
 }
 
 .allPeople {
-  /* border: 1px solid black; */
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -521,22 +506,21 @@ export default {
   align-items: center;
 }
 .people {
-  /* border: 1px solid black; */
   padding: 15px;
-  color: white;
+  color: #ffffff;
   font-family: "Montserrat", sans-serif;
-  background: rgb(209, 73, 152);
+  background: #d14998;
   font-size: 14px;
   font-weight: bolder;
   border-radius: 50%;
 }
 
 .people2 {
-  border: 2px solid white;
+  border: 2px solid #ffffff;
   padding: 15px;
-  color: white;
+  color: #ffffff;
   font-family: "Montserrat", sans-serif;
-  background: blue;
+  background: #0000ff;
   font-size: 14px;
   font-weight: bolder;
   border-radius: 50%;
@@ -544,11 +528,11 @@ export default {
 }
 
 .people3 {
-  border: 2px solid white;
+  border: 2px solid #ffffff;
   padding: 15px;
-  color: white;
+  color: #ffffff;
   font-family: "Montserrat", sans-serif;
-  background: red;
+  background: #ff0000;
   font-size: 14px;
   font-weight: bolder;
   border-radius: 50%;
@@ -556,7 +540,7 @@ export default {
 }
 
 .people3 {
-  border: 2px solid white;
+  border: 2px solid #ffffff;
   padding: 15px;
   color: white;
   font-family: "Montserrat", sans-serif;
@@ -568,9 +552,9 @@ export default {
 }
 
 .people4 {
-  border: 2px solid white;
+  border: 2px solid #ffffff;
   padding: 15px;
-  color: white;
+  color: #ffffff;
   font-family: "Montserrat", sans-serif;
   background: #158eb3;
   font-size: 14px;
@@ -580,7 +564,7 @@ export default {
 }
 
 .all {
-  border: 2px solid white;
+  border: 2px solid #ffffff;
   padding: 15px;
   color: white;
   font-family: "Montserrat", sans-serif;
@@ -589,7 +573,6 @@ export default {
   font-weight: bolder;
   border-radius: 50%;
   margin-left: -14px;
-  /* padding-left: 20px; */
 }
 
 .rightArrow {
@@ -600,6 +583,7 @@ export default {
   padding: 12px 14px;
   border-radius: 14px 0 30px 0;
   background: #2c2d7c;
+  cursor: pointer;
 }
 
 .rightArrow > img {
@@ -637,7 +621,6 @@ export default {
 }
 
 .linechart__buttons {
-  /* border: 1px solid yellow; */
   padding: 8px 5px;
   border-radius: 12px;
   font-family: "Montserrat", sans-serif;
@@ -680,7 +663,6 @@ export default {
 }
 
 .home__piechart {
-  /* border :1px solid black; */
   width: 44%;
   background: white;
   border-radius: 12px;
@@ -689,17 +671,12 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
-
-  /* background-color: blue; */
-  /* margin-right: 10%; */
 }
 
 .home__row4col2 {
-  /* border: 1px solid blue; */
   padding: 1.5%;
-
   flex: 3.5;
-  background: white;
+  background: #ffffff;
   border-radius: 20px;
 }
 
@@ -707,7 +684,6 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
-  /* border: 1px solid black; */
   margin: 10px 0.4%;
   padding: 14px 0;
   border-radius: 14px;
