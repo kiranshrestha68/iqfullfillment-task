@@ -46,7 +46,7 @@ export default {
   },
 
   created() {
-    console.log(this.resData, "hello from props");
+    // console.log(this.resData, "hello from props");
   },
 
   mounted() {

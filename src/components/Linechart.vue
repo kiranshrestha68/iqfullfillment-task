@@ -6,8 +6,6 @@
 
 <script>
 import Chart from "chart.js/dist/chart";
-// import { dashboard } from "../services/api.service";
-// import axios from "axios";
 
 export default {
   name: "Linechart",
@@ -22,14 +20,14 @@ export default {
           datasets: [
             {
               label: this.resData.covid_report.types[0],
-                data:this.resData.covid_report.values[0],
+              data: this.resData.covid_report.values[0],
               backgroundColor: "#1fadd8",
               borderColor: "#1fadd8",
               borderWidth: 2,
             },
             {
               label: this.resData.covid_report.types[1],
-              data:this.resData.covid_report.values[1],
+              data: this.resData.covid_report.values[1],
               backgroundColor: "blue",
               borderColor: "blue",
               borderWidth: 2,
@@ -55,17 +53,7 @@ export default {
   },
 
   created() {
-    // this.planetChartData.data.labels = ["hello", "kiran", "kkka", "fkljek"]
     // console.log(this.resData, "hello from props")
-  },
-
-  watch: {
-    // resData(val) {
-    //   this.dashboardData = val;
-    //   console.log(this.dashboardData.covid_report.categories, 'helllo')
-    //   this.planetChartData.data.labels = this.dashboardData.data.labels
-    //   console.log(this.planetChartData.data.labels, "ellllo")
-    // },
   },
 
   mounted() {

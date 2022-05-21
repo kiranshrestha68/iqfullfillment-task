@@ -8,7 +8,7 @@
           <input placeholder="Search..." v-model="searchText" />
 
           <div class="search__autoComplete" v-show="showSearchSuggestion">
-            <AutoComplete  :searchFound="searchFound" />
+            <AutoComplete :searchFound="searchFound" />
           </div>
         </div>
 
@@ -55,6 +55,10 @@ export default {
   },
   props: {},
 
+  created() {
+    this.getSearchData();
+  },
+
   watch: {
     searchText(val) {
       if (this.searchText.length > 1) {
@@ -69,7 +73,6 @@ export default {
   methods: {
     getSearchData() {
       const _data = {
-        // loc_id: 1,
         q: this.searchText,
       };
 
@@ -108,7 +111,7 @@ export default {
   position: absolute;
   z-index: 9999;
   top: 41px;
-  width: 90%;
+  width: 94%;
 }
 
 .topbar__main {
