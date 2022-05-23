@@ -127,14 +127,13 @@ export default {
 
 .router-link-exact-active {
   color: black;
-  text-decoration: underline black;
+  /* text-decoration: underline black; */
   font-weight: bolder;
   font-size: 16px;
 
 }
 
 .sidebar__main {
-  /* border: 1px solid black; */
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -143,7 +142,6 @@ export default {
 }
 
 .test {
-  /* border: 1px solid black; */
   display: flex;
   justify-content: center;
 }
@@ -159,10 +157,7 @@ export default {
 .sidebar__managementContents {
   display: flex;
   flex-direction: column;
-  /* border: 1px solid red; */
-  /* text-align: center; */
   width: 50%;
-  /* border: 1px solid black; */
 }
 
 .sidebar__managementContents > h3 {

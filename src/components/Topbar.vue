@@ -37,7 +37,7 @@
 
 <script>
 import AutoComplete from "../components/AutoComplete.vue";
-import axios from "axios";
+import { search } from "../services/api.service";
 
 export default {
   name: "Topbar",
@@ -56,13 +56,13 @@ export default {
   props: {},
 
   created() {
-    this.getSearchData();
+    this.getdata();
   },
 
   watch: {
     searchText(val) {
       if (this.searchText.length > 1) {
-        this.getSearchData();
+        this.getdata();
       }
 
       if (val.length == 0) {
@@ -71,13 +71,13 @@ export default {
     },
   },
   methods: {
-    getSearchData() {
+    getdata() {
       const _data = {
         q: this.searchText,
       };
 
-      axios
-        .post("https://apitest.iqfulfillment.com/v1/test/search", _data)
+      search
+        .getsearchItem(_data)
         .then((response) => {
           // console.log(
           //   response.data.results,
@@ -88,7 +88,6 @@ export default {
         .catch((error) => {
           console.log(error);
         });
-
       const data = this.searchItems.filter((val) => {
         if (this.searchText === "") {
           return val && this.showSearchSuggestion == false;

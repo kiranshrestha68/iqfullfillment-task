@@ -35,7 +35,7 @@
               <h3>{{ this.resData.covid_report.title }}</h3>
               <div class="linechart__buttons">
                 <button class="linechart__monthly">Monthly</button>
-                <button class="linechart__weekly">Weekly</button>
+                <button class="linechart__weekly"><del> Weekly</del></button>
               </div>
             </div>
             <div class="linechart__body"><Linechart :resData="resData" /></div>
@@ -109,8 +109,14 @@
 
       <div class="home__row4">
         <div class="home__row4col1">
-          <div class="home__piechart"><Doughnut :resData="resData" /></div>
-          <div class="home__piechart"><Doughnut2 :resData="resData" /></div>
+          <div class="home__piechart">
+            <h3>{{ this.reportGender }}</h3>
+            <div><Doughnut :resData="resData" /></div>
+          </div>
+          <div class="home__piechart">
+            <h3>{{ this.reportGroup }}</h3>
+            <Doughnut2 :resData="resData" />
+          </div>
         </div>
         <div class="home__row4col2">
           <div class="col2__header">
@@ -148,8 +154,7 @@ import Doughnut from "../components/Doughnut.vue";
 import CovidSwap from "../components/CovidSwap.vue";
 import love from "../assets/love.svg";
 import covid from "../assets/covid.svg";
-
-import axios from "axios";
+import { dashboard } from "../services/api.service";
 
 export default {
   name: "Home",
@@ -165,6 +170,9 @@ export default {
   data() {
     return {
       resData: null,
+      reportGender: null,
+      reportGroup: null,
+
       month: [],
       title: {
         title: "Covid Swab Test",
@@ -187,18 +195,19 @@ export default {
   },
 
   methods: {
-    async getDashboard() {
-      await axios
-        .get("https://apitest.iqfulfillment.com/v1/test/dashboard")
+    getDashboard() {
+      dashboard
+        .getDashboard()
         .then((res) => {
           if (res.data.success == true) {
-            // console.log(
-            //   res.data,
-            //   "helo this is res from line chart.js"
-            // );
             this.resData = res.data;
             this.month = res.data.covid_report.categories;
             // console.log(this.month, "hello thisis resdata")
+            this.reportGender = res.data.report_by_gender.map(
+              (t) => t.title
+            )[0];
+            this.reportGroup = res.data.report_by_group.map((t) => t.title)[0];
+            // console.log(this.reportGender ,"hello this is title")
           }
         })
         .catch((error) => {
@@ -430,8 +439,6 @@ export default {
   text-align: center;
 }
 
-
-
 .col2__body > h2 {
   color: #292929;
   font-family: "Montserrat", sans-serif;
@@ -629,24 +636,32 @@ export default {
 
 .linechart__monthly {
   border: none;
-  background-color: white;
-  color: blue;
+  background-color: #ffffff;
+  color: #0000ff;
   font-weight: bolder;
   font-size: 14px;
   margin: 0 6px;
   padding: 8px 15px;
   border-radius: 8px;
+  cursor: pointer;
+}
+
+.linechart__monthly:hover {
+  background-color: #fff6f6;
+  color: #1111ff;
+  transition: 0.5s all;
 }
 
 .linechart__weekly {
   border: none;
   background-color: transparent;
-  color: rgb(87, 87, 87);
+  color: #575757;
 
   font-size: 14px;
   margin: 0 6px;
   padding: 8px 15px;
   border-radius: 8px;
+  cursor: not-allowed;
 }
 
 .home__row4 {
@@ -657,7 +672,6 @@ export default {
   flex: 8.5;
   display: flex;
   justify-content: space-around;
-
   margin-right: 10px;
   margin-top: -158px;
 }
@@ -671,6 +685,14 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
+}
+
+.home__piechart > h3 {
+  font-family: "Montserrat", sans-serif;
+  color: #313131;
+  margin-bottom: 2.5vw;
+  font-size: 17px;
 }
 
 .home__row4col2 {
